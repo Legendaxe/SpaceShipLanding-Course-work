@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\OhorodnytskyiEngine">
+      <UniqueIdentifier>{5d177b54-5109-412e-9805-62df757e751c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Headers">
+      <UniqueIdentifier>{d50f0f5e-c510-4ed4-b906-88c1995f51ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Resources">
+      <UniqueIdentifier>{62506a7c-b63e-4c20-9e42-dee4f847ae89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OhorodnytskyiEngine\Systems">
+      <UniqueIdentifier>{4acb5798-2bae-430a-86b1-11dedea303c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OhorodnytskyiEngine\Objects">
+      <UniqueIdentifier>{89833bda-f2dc-4029-83cc-4c540d6def5c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Systems\Game.cpp">
+      <Filter>Source Files\OhorodnytskyiEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Systems\MovementSystem.cpp">
+      <Filter>Source Files\OhorodnytskyiEngine\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Systems\System.cpp">
+      <Filter>Source Files\OhorodnytskyiEngine\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Entities\Entity.cpp">
+      <Filter>Source Files\OhorodnytskyiEngine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Managers\ResourcesManager.cpp">
+      <Filter>Source Files\OhorodnytskyiEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Entities\Ship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Systems\WindSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OhorodnytskyiEngine\Entities\Bird.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OhorodnytskyiEngine\Entities\Entity.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Systems\Game.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Systems\MovementSystem.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Systems\System.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Managers\ResourcesManager.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Entities\Ship.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\MovementModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Systems\WindSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OhorodnytskyiEngine\Entities\Bird.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Honk.png">
+      <Filter>Resource Files\Resources</Filter>
+    </Image>
+    <Image Include="Resources\Ship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Landing_place.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
