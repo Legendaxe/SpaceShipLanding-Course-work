@@ -1,6 +1,8 @@
+#include "DEFINES/defines.h"
 #include "OhorodnytskyiEngine/Systems/Game.h"
 #include "OhorodnytskyiEngine/Systems/MovementSystem.h"
 #include "OhorodnytskyiEngine/Systems/WindSystem.h"
+
 
 namespace OhorodnytskyiEngine
 {
@@ -16,32 +18,55 @@ namespace OhorodnytskyiEngine
 
 	void Game::Tick(sf::Time gameTime)
 	{
-		for (auto& system : Game::s_systems)
+		if (!_running)
 		{
-			system->Tick(gameTime);
+			return;
 		}
 
 		switch (s_gameState)
 		{
 		case Losed:
-			Lost();
-			break;
+			DeclareCompletion(Losed);
+			return;
 		case Winned:
-			Win();
-			break;
+			DeclareCompletion(Winned);
+			return;
+		}
+
+		for (auto& system : Game::s_systems)
+		{
+			system->Tick(gameTime);
 		}
 	}
 
-	void Game::Win()
+	void Game::Start()
 	{
-		_window->clear(sf::Color::Red);
-		sf::sleep(sf::Time(sf::seconds(5000)));
+		_running = true;
+
+		for (auto& system : Game::s_systems)
+		{
+			system->Start();
+		}
 	}
 
-	void Game::Lost()
+	void Game::DeclareCompletion(GameState gameState)
 	{
-		_window->clear(sf::Color::Yellow);
-		sf::sleep(sf::Time(sf::seconds(5000)));
+		_running = false;
+
+		_window->clear(gameState == Winned ? sf::Color::Green : sf::Color::Red);
+
+		sf::Font arialFont;
+		arialFont.loadFromFile("Resources/arial.ttf");
+
+		sf::Text completionText;
+		completionText.setPosition(WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT / 2 - 20);
+		completionText.setFont(arialFont);
+		completionText.setString(gameState == Winned ? "You Win!" : "You Lose...");
+
+		_window->draw(completionText);
+		_window->display();
+
+		sf::sleep(sf::Time(sf::seconds(10)));
 	}
 
 	void Game::GameEnd(GameState gameState)
@@ -56,5 +81,5 @@ namespace OhorodnytskyiEngine
 	std::vector<System*> Game::s_systems;
 	std::vector<sf::Drawable*> Game::s_drawableEntities;
 	std::vector<sf::Sprite*> Game::s_collidableEntities;
-	GameState Game::s_gameState = Running;
+	GameState Game::s_gameState = Initializing;
 }

@@ -19,6 +19,11 @@ OhorodnytskyiEngine::WindSystem::WindSystem()
 
 void OhorodnytskyiEngine::WindSystem::Tick(sf::Time gameTime)
 {
+	if (!_running)
+	{
+		return;
+	}
+
 	if ((gameTime - _timeSinceLastWindChange).asSeconds() < 6.0f)
 	{
 		return;

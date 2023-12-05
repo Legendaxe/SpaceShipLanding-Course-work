@@ -10,6 +10,7 @@ namespace OhorodnytskyiEngine
 {
 
 	enum GameState {
+		Initializing,
 		Running,
 		Losed,
 		Winned
@@ -20,12 +21,13 @@ namespace OhorodnytskyiEngine
 	private:
 		sf::RenderWindow* _window;
 
-		void Win();
-		void Lost();
+		void DeclareCompletion(GameState gameState);
+
 	public:
 		Game(sf::RenderWindow& window);
 
 		void Tick(sf::Time gameTime);
+		void Start();
 
 		static void GameEnd(GameState gameState);
 

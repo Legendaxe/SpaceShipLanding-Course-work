@@ -57,6 +57,9 @@
     <ClCompile Include="src\OhorodnytskyiEngine\Entities\Bird.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\DEFINES\defines.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\OhorodnytskyiEngine\Entities\Entity.h">
@@ -97,5 +100,8 @@
     <Image Include="Resources\Landing_place.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\arial.ttf" />
   </ItemGroup>
 </Project>

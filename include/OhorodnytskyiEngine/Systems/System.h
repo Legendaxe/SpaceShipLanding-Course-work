@@ -5,7 +5,7 @@ namespace OhorodnytskyiEngine
 {
 	class System
 	{
-	private:
+	protected:
 		bool _running = false;
 	public:
 		virtual void Start();

@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\DEFINES\defines.h" />
     <ClCompile Include="src\OhorodnytskyiEngine\Entities\Bird.cpp" />
     <ClCompile Include="src\OhorodnytskyiEngine\Entities\Ship.cpp" />
     <ClCompile Include="src\OhorodnytskyiEngine\Entities\Entity.cpp" />
@@ -162,6 +163,9 @@
     </Image>
     <Image Include="Resources\Landing_place.png" />
     <Image Include="Resources\Ship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\arial.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

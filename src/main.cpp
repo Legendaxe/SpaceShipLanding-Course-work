@@ -1,21 +1,22 @@
+#include "DEFINES/defines.h"
 #include <SFML/Graphics.hpp>
 #include "OhorodnytskyiEngine/Systems/Game.h"
-#include <OhorodnytskyiEngine/Entities/Ship.h>
+#include "OhorodnytskyiEngine/Entities/Ship.h"
 
-#define ROTATE_ANGLE 0.5f
+
 
 void HandleInput(sf::RenderWindow& window, sf::Event& event, OhorodnytskyiEngine::Ship& ship);
 
 int main()
 {
     const float fps = 60.0f;
-    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
 
     sf::Texture landingPlaceTexture;
     landingPlaceTexture.loadFromFile("Resources/Landing_place.png");
 
     sf::Sprite landingPlace(landingPlaceTexture);
-    landingPlace.setPosition(350, 780);
+    landingPlace.setPosition(WINDOW_WIDTH - 450, WINDOW_HEIGHT - 20);
 
     OhorodnytskyiEngine::Game::s_drawableEntities.push_back(&landingPlace);
     OhorodnytskyiEngine::Game::s_collidableEntities.push_back(&landingPlace);
@@ -29,7 +30,7 @@ int main()
     OhorodnytskyiEngine::Ship ship;
 
     ship.AddMovementModifier({ "gravity", {0, 1} });
-    ship.setPosition({ 400, 200 });
+    ship.setPosition({ WINDOW_WIDTH - 400, WINDOW_HEIGHT - 600 });
 
 
 
