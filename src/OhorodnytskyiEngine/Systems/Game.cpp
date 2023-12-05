@@ -2,6 +2,7 @@
 #include "OhorodnytskyiEngine/Systems/Game.h"
 #include "OhorodnytskyiEngine/Systems/MovementSystem.h"
 #include "OhorodnytskyiEngine/Systems/WindSystem.h"
+#include "OhorodnytskyiEngine/Managers/ResourcesManager.h"
 
 
 namespace OhorodnytskyiEngine
@@ -55,12 +56,9 @@ namespace OhorodnytskyiEngine
 
 		_window->clear(gameState == Winned ? sf::Color::Green : sf::Color::Red);
 
-		sf::Font arialFont;
-		arialFont.loadFromFile("Resources/arial.ttf");
-
 		sf::Text completionText;
 		completionText.setPosition(WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT / 2 - 20);
-		completionText.setFont(arialFont);
+		completionText.setFont(*ResourcesManager::GetInstance()->GetFont("arial"));
 		completionText.setString(gameState == Winned ? "You Win!" : "You Lose...");
 
 		_window->draw(completionText);

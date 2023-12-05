@@ -1,13 +1,12 @@
+#include "OhorodnytskyiEngine/Managers/ResourcesManager.h"
 #include "OhorodnytskyiEngine/Entities/Entity.h"
-#include <OhorodnytskyiEngine/Systems/Game.h>
+#include "OhorodnytskyiEngine/Systems/Game.h"
 
 namespace OhorodnytskyiEngine
 {
-	Entity::Entity(const std::string filePath)
+	Entity::Entity(const std::string textureKey)
 	{
-		_texture = new sf::Texture();
-		_texture->loadFromFile(filePath);
-		sf::Texture::bind(_texture);
+		_texture = ResourcesManager::GetInstance()->GetTexture(textureKey);
 
 		_sprite.setTexture(*_texture);
 		_sprite.setOrigin((sf::Vector2f)_texture->getSize() / 2.f);

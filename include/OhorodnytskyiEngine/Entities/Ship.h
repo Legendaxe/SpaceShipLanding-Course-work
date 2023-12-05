@@ -12,7 +12,7 @@ namespace OhorodnytskyiEngine
 
         bool DetectCollision();
     public:
-        Ship(const std::string filePath = "Resources/Ship.png");
+        Ship(const std::string textureKey = "ship");
 
         void StartEngine();
         void StopEngine();

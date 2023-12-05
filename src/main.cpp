@@ -2,24 +2,22 @@
 #include <SFML/Graphics.hpp>
 #include "OhorodnytskyiEngine/Systems/Game.h"
 #include "OhorodnytskyiEngine/Entities/Ship.h"
+#include "OhorodnytskyiEngine/Managers/ResourcesManager.h"
 
-
+void SetupLandingPlace(sf::Sprite* landingPlace);
+void SetupResourcesManager();
 
 void HandleInput(sf::RenderWindow& window, sf::Event& event, OhorodnytskyiEngine::Ship& ship);
 
 int main()
 {
+    SetupResourcesManager();
+
+    sf::Sprite landingPlace;
+    SetupLandingPlace(&landingPlace);
+
     const float fps = 60.0f;
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
-
-    sf::Texture landingPlaceTexture;
-    landingPlaceTexture.loadFromFile("Resources/Landing_place.png");
-
-    sf::Sprite landingPlace(landingPlaceTexture);
-    landingPlace.setPosition(WINDOW_WIDTH - 450, WINDOW_HEIGHT - 20);
-
-    OhorodnytskyiEngine::Game::s_drawableEntities.push_back(&landingPlace);
-    OhorodnytskyiEngine::Game::s_collidableEntities.push_back(&landingPlace);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Course Work");
 
     sf::Clock clock;
     sf::Clock gameTime;
@@ -92,4 +90,24 @@ void HandleInput(sf::RenderWindow& window, sf::Event& event, OhorodnytskyiEngine
         if (event.type == sf::Event::Closed)
             window.close();
     }
+}
+
+void SetupResourcesManager()
+{
+    OhorodnytskyiEngine::ResourcesManager* resourcesManager = OhorodnytskyiEngine::ResourcesManager::GetInstance();
+    resourcesManager->AddTextureFromFile("Resources/Ship.png", "ship");
+    resourcesManager->AddTextureFromFile("Resources/Landing_place.png", "landing_place");
+    resourcesManager->AddTextureFromFile("Resources/Honk.png", "honk");
+    resourcesManager->AddFontFromFile("Resources/arial.ttf", "arial");
+}
+
+void SetupLandingPlace(sf::Sprite* landingPlace)
+{
+    sf::Texture* texture = OhorodnytskyiEngine::ResourcesManager::GetInstance()->GetTexture("landing_place");
+
+    landingPlace->setTexture(*texture);
+    landingPlace->setPosition(WINDOW_WIDTH - 450, WINDOW_HEIGHT - 20);
+
+    OhorodnytskyiEngine::Game::s_drawableEntities.push_back(landingPlace);
+    OhorodnytskyiEngine::Game::s_collidableEntities.push_back(landingPlace);
 }

@@ -6,7 +6,7 @@
 
 namespace OhorodnytskyiEngine
 {
-	Ship::Ship(const std::string filePath) : Entity(filePath)
+	Ship::Ship(const std::string textureKey) : Entity(textureKey)
 	{
 		SetSpeed(2.5f);
 		_engineStarted = false;

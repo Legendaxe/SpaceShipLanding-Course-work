@@ -18,7 +18,7 @@ namespace OhorodnytskyiEngine
 		std::unordered_map<std::string, MovementModifier> _movementModifiers;
 
 	public:
-		Entity(std::string filePath = "Resources/Honk.png");
+		Entity(std::string textureKey = "honk");
 
 		sf::Sprite *GetSprite();
 
