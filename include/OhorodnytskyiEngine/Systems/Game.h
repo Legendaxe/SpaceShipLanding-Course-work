@@ -2,6 +2,7 @@
 #pragma once
 
 #include "OhorodnytskyiEngine/Entities/Entity.h"
+#include "OhorodnytskyiEngine/Entities/Ship.h"
 #include "OhorodnytskyiEngine/Systems/System.h"
 #include <vector>
 
@@ -20,11 +21,20 @@ namespace OhorodnytskyiEngine
 	{
 	private:
 		sf::RenderWindow* _window;
+
+		Ship* _ship;
+		sf::Sprite* _landingPlace;
+
+		void SetupLandingPlace();
+		void SetupShip();
 	public:
 		Game(sf::RenderWindow& window);
+		~Game();
 
 		void Tick(sf::Time gameTime);
 		void Start();
+
+		void HandleInput(sf::Event& event);
 
 		static void GameEnd(GameState gameState);
 

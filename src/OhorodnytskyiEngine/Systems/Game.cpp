@@ -11,10 +11,20 @@ namespace OhorodnytskyiEngine
 	{
 		_window = &window;
 
+		SetupShip();
+
+		SetupLandingPlace();
+
 		s_systems.push_back(new MovementSystem());
 		s_systems.push_back(new WindSystem());
 
 		Start();
+	}
+
+	Game::~Game()
+	{
+		delete _ship;
+		delete _landingPlace;
 	}
 
 	void Game::Tick(sf::Time gameTime)
@@ -73,6 +83,55 @@ namespace OhorodnytskyiEngine
 		s_drawableEntities.shrink_to_fit();
 		
 		s_gameState = gameState;
+	}
+
+	void Game::HandleInput(sf::Event& event)
+	{
+		while (_window->pollEvent(event))
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+			{
+				_ship->StartEngine();
+			}
+			else
+			{
+				_ship->StopEngine();
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+			{
+				_ship->rotate(-ROTATE_ANGLE);
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+			{
+				_ship->rotate(ROTATE_ANGLE);
+			}
+
+			if (event.type == sf::Event::Closed)
+				_window->close();
+		}
+	}
+
+	void Game::SetupLandingPlace()
+	{
+		_landingPlace = new sf::Sprite();
+
+		sf::Texture* texture = ResourcesManager::GetInstance()->GetTexture("landing_place");
+
+		_landingPlace->setTexture(*texture);
+		_landingPlace->setPosition(WINDOW_WIDTH - 450, WINDOW_HEIGHT - 20);
+
+		s_drawableEntities.push_back(_landingPlace);
+		s_collidableEntities.push_back(_landingPlace);
+	}
+
+	void Game::SetupShip()
+	{
+		_ship = new Ship();
+
+		_ship->AddMovementModifier({ "gravity", {0, 1} });
+		_ship->setPosition({ WINDOW_WIDTH - 400, WINDOW_HEIGHT - 600 });
 	}
 
 	std::vector<Entity*> Game::s_transformableEntities;
