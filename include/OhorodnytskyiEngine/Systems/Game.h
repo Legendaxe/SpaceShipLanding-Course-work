@@ -20,9 +20,6 @@ namespace OhorodnytskyiEngine
 	{
 	private:
 		sf::RenderWindow* _window;
-
-		void DeclareCompletion(GameState gameState);
-
 	public:
 		Game(sf::RenderWindow& window);
 
@@ -30,6 +27,8 @@ namespace OhorodnytskyiEngine
 		void Start();
 
 		static void GameEnd(GameState gameState);
+
+		void DeclareCompletion(GameState gameState);
 
 		static std::vector<OhorodnytskyiEngine::System*> s_systems;
 		static std::vector<OhorodnytskyiEngine::Entity*> s_transformableEntities;

@@ -43,11 +43,18 @@ int main()
             redraw = true; 
             game.Tick(gameTime.getElapsedTime());
             clock.restart();
+            switch (OhorodnytskyiEngine::Game::s_gameState)
+            {
+            case OhorodnytskyiEngine::GameState::Losed:
+                game.DeclareCompletion(OhorodnytskyiEngine::GameState::Losed);
+                return 0;
+            case OhorodnytskyiEngine::GameState::Winned:
+                game.DeclareCompletion(OhorodnytskyiEngine::GameState::Winned);
+                return 0;
+            }
 
             HandleInput(window, event , ship);
         }
-        
-       
 
         if (redraw)
         {
