@@ -19,6 +19,7 @@ namespace OhorodnytskyiEngine
 
 	public:
 		Entity(std::string textureKey = "honk");
+		virtual ~Entity() { }
 
 		sf::Sprite *GetSprite();
 
